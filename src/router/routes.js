@@ -4,14 +4,16 @@ const routes = [
     path: '/',
     component: () => import('layouts/Auth.vue'),
     children: [
-      { path: 'login', component: () => import('pages/auth/Login.vue') }
+      { path: '', component: () => import('pages/auth/Login.vue') },
+      { path: 'cadastrar', component: () => import('pages/auth/Cadastrar.vue') },
+      { path: 'cadastrar2', component: () => import('pages/auth/Cadastrar2.vue') }
     ]
   },
   {
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: 'dashboard', component: () => import('pages/Index.vue') }
     ]
   }
 ]

@@ -5,40 +5,37 @@
         <q-avatar size="100px" font-size="52px" color="teal" text-color="white" icon="play_arrow" />
       </div>
       <div class="col-10 q-pb-md">
-        <q-input type="email" label="Email" standout="bg-blue-grey-9 text-teal" rounded v-model="form.email"></q-input>
+        <q-input label="Nome" standout="bg-blue-grey-9 text-teal" rounded v-model="form.name"></q-input>
       </div>
       <div class="col-10 q-pb-md">
         <q-input label="Senha" color="cyan-13" standout="bg-blue-grey-9 text-teal" rounded type="password" v-model="form.password"></q-input>
       </div>
       <div class="col-10 q-pb-md">
-        <q-btn @click="autenticar()" rounded color="cyan-10" label="Autenticar" class="full-width"></q-btn>
+        <q-input label="Confirmar" color="cyan-13" standout="bg-blue-grey-9 text-teal" rounded type="password" v-model="form.password"></q-input>
+      </div>
+      <div class="col-10 q-pb-md">
+        <q-btn rounded color="cyan-10" label="Finalizar" class="full-width"></q-btn>
       </div>
       <div class="col-10">
-        <q-btn rounded outline to="cadastrar" color="cyan-13" label="Cadastrar" class="full-width"></q-btn>
+        <q-btn to="cadastrar" rounded outline color="cyan-13" label="Voltar" class="full-width"></q-btn>
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 
 export default {
   data () {
     return {
       form: {
+        name: 'Rafael Dias',
         email: 'rafael.dias@gmail.com',
-        password: '123456'
+        password: '123456',
+        birthday: '1997-03-24',
+        sexo: 1,
+        description: 'string'
       }
-    }
-  },
-  methods: {
-    ...mapActions('auth', ['login']),
-    async autenticar () {
-      this.$q.loading.show()
-      let res = await this.login(this.form)
-      this.$q.loading.hide()
-      console.log('res => ', res)
     }
   }
 }
