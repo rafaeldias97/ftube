@@ -22,7 +22,7 @@
         </q-input>
       </div>
       <div class="col-10 q-pb-md">
-        <q-btn rounded to="cadastrar2" color="cyan-10" label="Continuar" class="full-width"></q-btn>
+        <q-btn rounded @click="next()" color="cyan-10" label="Continuar" class="full-width"></q-btn>
       </div>
       <div class="col-10">
         <q-btn to="/" rounded outline color="cyan-13" label="Voltar" class="full-width"></q-btn>
@@ -32,18 +32,29 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   data () {
     return {
       form: {
-        name: 'Rafael Dias',
-        email: 'rafael.dias@gmail.com',
-        password: '123456',
-        birthday: '24-03-1997',
-        sexo: 1,
-        description: 'string'
+        name: '',
+        email: '',
+        birthday: ''
       }
+    }
+  },
+  mounted () {
+    this.form = Object.assign({}, this.formState)
+  },
+  computed: {
+    ...mapState('auth', ['formState'])
+  },
+  methods: {
+    ...mapMutations('auth', ['CHANGE_FORM_CADASTRO']),
+    next () {
+      this.CHANGE_FORM_CADASTRO(this.form)
+      this.$router.push('cadastrar2')
     }
   }
 }

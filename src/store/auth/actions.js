@@ -6,6 +6,12 @@ const login = async ({ commit }, obj) => {
   return res.data
 }
 
+const createUser = async ({ commit }, obj) => {
+  let res = await axios.$axios.post('v1/person', obj)
+  return res.data
+}
+
 export default {
-  login
+  login,
+  createUser
 }
