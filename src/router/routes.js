@@ -13,7 +13,10 @@ const routes = [
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: 'dashboard', component: () => import('pages/Index.vue') }
+      { path: 'dashboard', component: () => import('pages/Dashboard.vue') },
+      { path: 'profile', component: () => import('pages/tabs/Profile.vue') },
+      { path: 'room', component: () => import('pages/tabs/Rooms.vue') },
+      { path: 'video', component: () => import('pages/tabs/Videos.vue') }
     ]
   }
 ]
